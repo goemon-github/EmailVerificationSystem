@@ -10,4 +10,6 @@ interface UserDAO
     public function getById(int $id): ?User;
     public function getByEmail(string $email): ?User;
     public function getHashedPasswordById(int $id): ?string;
+    public function updateEmailVerified(User $user): bool;
+    public function updateEmail(User $user): bool;
 }

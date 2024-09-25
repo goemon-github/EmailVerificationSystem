@@ -6,7 +6,6 @@ use Helpers\Settings;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-//require "vender/autoload.php";
 
 require_once 'vendor/autoload.php';
 

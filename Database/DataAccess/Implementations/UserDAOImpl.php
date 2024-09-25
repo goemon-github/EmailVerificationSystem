@@ -2,6 +2,7 @@
 
 namespace Database\DataAccess\Implementations;
 
+use Exception;
 use Database\DataAccess\Interfaces\UserDAO;
 use Database\DatabaseManager;
 use Models\DataTimeStamp;
@@ -58,12 +59,6 @@ class UserDAOImpl implements UserDAO
         return $result;
     }
 
-    /*
-    private function getRawByEmailVerified(): ?bool{
-        $mysqli = DatabaseManager::getMysqliConnection();
-        $query = "SELECT * FROM users WHERE email_verified = ?";
-    }
-    */
 
     private function rawDataToUser(array $rawData): User{
         return new User(
@@ -98,8 +93,9 @@ class UserDAOImpl implements UserDAO
     }
 
 
-    public function updateEmailVerified(User $user){
+    public function updateEmailVerified(User $user): bool{
         $mysqli = DatabaseManager::getMysqliConnection();
+
         $query = 
             <<< SQL
                 update users
@@ -112,17 +108,17 @@ class UserDAOImpl implements UserDAO
             $query,
             "ii",
             [
-            $user->getEmailVerified(),
-            $user->getId()
-            ]
+                $user->getEmailVerified(),
+                $user->getId(),
+            ],
         );
 
-        if(!$result) throw new Exception("Falied to update emali Verified: " . user->getId());
+        if(!$result) throw new Exception("Falied to update emali Verified: " . $user->getId());
 
         return $result;
     }
 
-    public function updateEmail(User $user): bool{
+    public function updateEmail(User $user): bool {
         $mysqli = DatabaseManager::getMysqliConnection();
 
         $query = 
@@ -142,7 +138,7 @@ class UserDAOImpl implements UserDAO
             ]
         );
 
-        if(!$result) throw new Exception("Falied to update emali for UserID: " . user->getId());
+        if(!$result) throw new Exception("Falied to update emali for UserID: " . $user->getId());
 
         return $result;
 

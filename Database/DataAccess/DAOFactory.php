@@ -4,7 +4,7 @@ namespace Database\DataAccess;
 
 use Database\DataAccess\Implementations\ComputerPartDAOImpl;
 use Database\DataAccess\Implementations\ComputerPartDAOMemcachedImpl;
-use Database\DataAccess\Implementations\userDAOImpl;
+use Database\DataAccess\Implementations\UserDAOImpl;
 use Database\DataAccess\Interfaces\ComputerPartDAO;
 use Database\DataAccess\Interfaces\UserDAO;
 use Helpers\Settings;
@@ -21,6 +21,6 @@ class DAOFactory
     }
 
     public static function getUserDAO(): UserDAO {
-        return new userDAOImpl();
+        return new  UserDAOImpl();
     }
 }

@@ -39,16 +39,6 @@ class ValidationHelper
 
             $value = $data[$field];
 
-            /*
-            $validatedValue = match ($type) {
-                ValueType::STRING => is_string($value) ? $value : throw new \InvalidArgumentException("The provided value is not a valid string."),
-                ValueType::INT => self::integer($value), // You can further customize this method if needed
-                ValueType::FLOAT => filter_var($value, FILTER_VALIDATE_FLOAT),
-                ValueType::DATE => self::validateDate($value),
-                default => throw new \InvalidArgumentException(sprintf("Invalid type for field: %s, with type %s", $field, $type)),
-            };
-            */
-
             $validatedValue = match ($type) {
                 ValueType::STRING => is_string($value) ? $value : throw new \InvalidArgumentException("The provided value is not a valid string."),
                 ValueType::INT => self::integer($value), // 必要に応じて、この方法をさらにカスタマイズすることができます。
